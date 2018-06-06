@@ -37,7 +37,7 @@ def strip_non_asii(string):
 
 with open('train.csv', 'rb') as csvfile:
     reader = csv.reader(csvfile, delimiter =',')
-    reader._next_()
+    reader.next()
     for row in reader:
 
         tweet = dict()
