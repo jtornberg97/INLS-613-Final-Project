@@ -35,9 +35,9 @@ def strip_non_asii(string):
     # clean: The preprocessed string
     # TextBlob: The textblob oject, created from 'clean' string
 
-with open('train.csv', 'rb') as csvfile:
+with open('train.csv', 'r') as csvfile:
     reader = csv.reader(csvfile, delimiter =',')
-    reader.next()
+    next(reader)
     for row in reader:
 
         tweet = dict()
@@ -73,7 +73,7 @@ with open('train.csv', 'rb') as csvfile:
         tweet['clean'] = re.sub(r'\bcoo+\b', 'cool', tweet['clean'])
 
         # Create textblob object
-        tweet['TextBlob'] 
+        tweet['TextBlob'] = TextBlob(tweet['clean'])
 
         # Correct spelling (SLOW)
         #tweet['TextBlob'] = tweet['TextBlob'].correct()
